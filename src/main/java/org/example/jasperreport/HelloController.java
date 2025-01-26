@@ -35,9 +35,13 @@ public class HelloController {
 
             Map parametros = new HashMap();
             parametros.put("Estado",reportComboBox.getSelectionModel().getSelectedItem());
-
-            JasperPrint print = JasperFillManager.fillReport("C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL_Equipo.jasper", parametros , conexion);
-            JasperExportManager.exportReportToPdfFile(print,"C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL_Equipo.pdf");
+            if(reportComboBox.getSelectionModel().getSelectedItem().equals("Información de equipos")) {
+                JasperPrint print = JasperFillManager.fillReport("C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL_Equipo.jasper", parametros, conexion);
+                JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL_Equipo.pdf");
+            }else if (reportComboBox.getSelectionModel().getSelectedItem().equals("Información de jugadores")) {
+                JasperPrint print = JasperFillManager.fillReport("C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL.jasper", parametros, conexion);
+                JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\34658\\IdeaProjects\\JasperReport\\Informes\\NFL_Jugador.pdf");
+            }
         }catch (Throwable e){
             e.printStackTrace();
         }
