@@ -14,7 +14,7 @@
 
     <!-- Subtítulo -->
     <Label text="Seleccione un tipo de reporte para continuar"
-           style="-fx-font-size: 14; -fx-text-fill: lightgray;"/>
+           style="-fx-font-size: 14; -fx-text-fill: white;"/>
 
     <!-- ComboBox para seleccionar reporte -->
     <ComboBox fx:id="reportComboBox" prefWidth="250" promptText="Seleccione un reporte"
