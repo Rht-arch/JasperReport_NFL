@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.jasperreport.HelloController"
-      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+      spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #1e212b; -fx-border-radius: 10; -fx-background-radius: 10;">
+
+    <!-- Título -->
+    <Label text="Generador de Reportes NFL"
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+    <!-- Subtítulo -->
+    <Label text="Seleccione un tipo de reporte para continuar"
+           style="-fx-font-size: 14; -fx-text-fill: lightgray;"/>
 
     <!-- ComboBox para seleccionar reporte -->
-    <ComboBox fx:id="reportComboBox" prefWidth="200"/>
+    <ComboBox fx:id="reportComboBox" prefWidth="250" promptText="Seleccione un reporte"
+              style="-fx-background-color: #2a2d37; -fx-text-fill: white; -fx-border-color: #0077ff;"/>
 
     <!-- Botón para generar reporte -->
-    <Button fx:id="generateReportButton" text="Generar Reporte" prefWidth="200" onAction="#generateReport"/>
+    <Button fx:id="generateReportButton" text="Generar Reporte" prefWidth="250"
+            style="-fx-background-color: #0077ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;"
+            onAction="#generateReport"/>
 
 </VBox>
