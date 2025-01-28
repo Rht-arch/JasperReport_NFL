@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.jasperreport.HelloController"
-      spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #1e212b; -fx-border-radius: 10; -fx-background-radius: 10;">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="15" style="-fx-padding: 20; -fx-background-color: #f0f0f0; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.jasperreport.HelloController">
 
     <!-- Título -->
-    <Label text="Generador de Reportes NFL"
-           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;" text="Generador de Reportes NFL" />
 
     <!-- Subtítulo -->
-    <Label text="Seleccione un tipo de reporte para continuar"
-           style="-fx-font-size: 14; -fx-text-fill: white;"/>
+    <Label style="-fx-font-size: 14; -fx-text-fill: black;" text="Seleccione un tipo de reporte para continuar" />
 
     <!-- ComboBox para seleccionar reporte -->
-    <ComboBox fx:id="reportComboBox" prefWidth="250" promptText="Seleccione un reporte"
-              style="-fx-background-color: #2a2d37; -fx-text-fill: white; -fx-border-color: #0077ff;"/>
+    <ComboBox fx:id="reportComboBox" prefWidth="250" promptText="Seleccione un reporte" style="-fx-prompt-text-fill: white; -fx-text-fill: black; -fx-border-color: #0077ff;" />
 
+
+    <!-- ComboBox para seleccionar equipo -->
+    <ComboBox fx:id="teamComboBox" prefWidth="250" promptText="Seleccione un equipo" style="-fx-text-fill: black; -fx-border-color: #0077ff;" />
+
+    <!-- Campo de texto para el año -->
+    <TextField fx:id="yearTextField" prefWidth="250" promptText="Ingrese el año" style="-fx-background-color: #2a2d37; -fx-text-fill: black; -fx-border-color: #0077ff;" />
+
+    <!-- Campo de texto para el nombre del jugador -->
+    <TextField fx:id="playerNameTextField" prefWidth="250" promptText="Ingrese el nombre del jugador" style="-fx-background-color: #2a2d37; -fx-text-fill: black; -fx-border-color: #0077ff;" />
     <!-- Botón para generar reporte -->
-    <Button fx:id="generateReportButton" text="Generar Reporte" prefWidth="250"
-            style="-fx-background-color: #0077ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;"
-            onAction="#generateReport"/>
+    <Button fx:id="generateReportButton" onAction="#generateReport" prefWidth="250" style="-fx-background-color: #0077ff; -fx-text-fill: black; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;" text="Generar Reporte" />
 
 </VBox>
