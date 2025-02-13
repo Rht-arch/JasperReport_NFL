@@ -5,10 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -53,19 +56,26 @@ public class HelloController {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mariadb://localhost:3306/nfl","root","");
 
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar Informe PDF");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos PDF", "*.pdf"));
+            File selectedFile = fileChooser.showSaveDialog(new Stage());
+
             Map parametros = new HashMap();
             parametros.put("equipo", teamComboBox.getSelectionModel().getSelectedItem());
             parametros.put("draft", yearTextField.getText());
             parametros.put("jugador", playerNameTextField.getText());
-            if(reportComboBox.getSelectionModel().getSelectedItem().equals("Equipos por año")) {
-                JasperPrint print = JasperFillManager.fillReport("/home/alumno/NFL/Informes/NFL_Equipo.jasper", parametros, conexion);
-                JasperExportManager.exportReportToPdfFile(print, "/home/alumno/NFL/Informes/NFL_Equipo.pdf");
-            }else if (reportComboBox.getSelectionModel().getSelectedItem().equals("Estadisticas de un jugador")) {
-                JasperPrint print = JasperFillManager.fillReport("/home/alumno/NFL/Informes/NFL_Jugador.jasper", parametros, conexion);
-                JasperExportManager.exportReportToPdfFile(print, "/home/alumno/NFL/Informes/NFL_Jugador.pdf");
+            if(reportComboBox.getSelectionModel().getSelectedItem().equals("Equipos por año") && selectedFile != null) {
+                JasperPrint print = JasperFillManager.fillReport("Informes/NFL_Equipo.jasper", parametros, conexion);
+                JasperExportManager.exportReportToPdfFile(print, selectedFile.getAbsolutePath());
+            }else if (reportComboBox.getSelectionModel().getSelectedItem().equals("Estadisticas de un jugador") && selectedFile != null) {
+                JasperPrint print = JasperFillManager.fillReport("Informes/NFL_Jugador.jasper", parametros, conexion);
+                JasperExportManager.exportReportToPdfFile(print, selectedFile.getAbsolutePath());
             }
         }catch (Throwable e){
             e.printStackTrace();
         }
     }
 }
+
+
